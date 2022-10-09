@@ -65,12 +65,16 @@ namespace Server
                     while (true)
                     {
 
-                        TcpClient client = server.AcceptTcpClient();                      
+                        TcpClient client = server.AcceptTcpClient();
+                        /// gửi port kết nối về client
                         SendIPRemote(client);
                         clients.Add(client);
+                        /// gửi danh sách client kết nối 
+                        ///
                         Thread receive = new Thread(Receive);
                         receive.IsBackground = true;
                         receive.Start(client);
+                        SendListClient();
                         loadLVDanhSach();
                     }
                 }
@@ -96,6 +100,18 @@ namespace Server
             listen.IsBackground = true;
             listen.Start();
 
+        }
+
+        private void SendListClient()
+        {
+            if (chuoiDanhSachClient() != "")
+            {
+                foreach (var item in clients)
+                {
+                    Send(item, "guidanhsachclient!!!");
+                    Send(item, chuoiDanhSachClient());
+                }
+            }
         }
 
         private void loadLVDanhSach()
@@ -128,7 +144,7 @@ namespace Server
                 while (true)
                 {
                     string str = sr.ReadLine();
-                    if (str == "Close Client...")
+                    if (str == "aksjkhfdsạkghjkdsahgjkdsahk")
                     {
                         AddMessage("Client "+client.Client.RemoteEndPoint.ToString()+" vừa đóng kết nối");
                         EndClient(client);
@@ -168,6 +184,7 @@ namespace Server
             clients.Remove((TcpClient)client);
             client.Close();
             loadLVDanhSach();
+            SendListClient();
         }
 
         private void AddMessage(string text)
@@ -177,13 +194,13 @@ namespace Server
             lv_KhungChat.Items.Add(text);
             }
         }
-        private void Send(TcpClient client)
+        private void Send(TcpClient client,string s)
         {
-            if (!string.IsNullOrEmpty(txt_TinNhan.Text))
+            if (!string.IsNullOrEmpty(s))
             {
                 NetworkStream stream = client.GetStream();
                 StreamWriter sw = new StreamWriter(stream);
-                string str = TextServer(txt_TinNhan.Text);
+                string str = s;
                 sw.WriteLine(str);
                 sw.Flush();
 
@@ -195,10 +212,25 @@ namespace Server
         {
             foreach (TcpClient item in this.clients)
             {
-                Send(item);
+                Send(item,TextServer(txt_Port.Text));
             }
             AddMessage(TextServer(txt_TinNhan.Text));
             txt_TinNhan.Clear();
+
+        }
+        private string chuoiDanhSachClient()
+        {
+            string str = "server;";
+            foreach (var item in clients)
+            {
+                    str += item.Client.RemoteEndPoint.ToString() + ";";
+               
+            }
+            return str;
+        }
+
+        private void lv_DanhSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

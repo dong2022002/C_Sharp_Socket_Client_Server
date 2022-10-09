@@ -34,7 +34,6 @@ namespace TCP_MultiChat
             this.txt_Port = new System.Windows.Forms.TextBox();
             this.group_Chat = new System.Windows.Forms.GroupBox();
             this.lv_KhungChat = new System.Windows.Forms.ListView();
-            this.btn_DoiPort = new System.Windows.Forms.Button();
             this.txt_TinNhan = new System.Windows.Forms.TextBox();
             this.btn_Gui = new System.Windows.Forms.Button();
             this.group_DanhSach = new System.Windows.Forms.GroupBox();
@@ -84,15 +83,6 @@ namespace TCP_MultiChat
             this.lv_KhungChat.UseCompatibleStateImageBehavior = false;
             this.lv_KhungChat.View = System.Windows.Forms.View.List;
             // 
-            // btn_DoiPort
-            // 
-            this.btn_DoiPort.Location = new System.Drawing.Point(233, 35);
-            this.btn_DoiPort.Name = "btn_DoiPort";
-            this.btn_DoiPort.Size = new System.Drawing.Size(86, 25);
-            this.btn_DoiPort.TabIndex = 0;
-            this.btn_DoiPort.Text = "Đổi Port";
-            this.btn_DoiPort.UseVisualStyleBackColor = true;
-            // 
             // txt_TinNhan
             // 
             this.txt_TinNhan.Location = new System.Drawing.Point(18, 336);
@@ -130,6 +120,7 @@ namespace TCP_MultiChat
             this.lv_DanhSach.Size = new System.Drawing.Size(244, 345);
             this.lv_DanhSach.TabIndex = 0;
             this.lv_DanhSach.UseCompatibleStateImageBehavior = false;
+            this.lv_DanhSach.View = System.Windows.Forms.View.List;
             // 
             // btn_Nhom
             // 
@@ -149,7 +140,6 @@ namespace TCP_MultiChat
             this.Controls.Add(this.group_DanhSach);
             this.Controls.Add(this.btn_Gui);
             this.Controls.Add(this.txt_TinNhan);
-            this.Controls.Add(this.btn_DoiPort);
             this.Controls.Add(this.group_Chat);
             this.Controls.Add(this.groupBox1);
             this.Name = "form_Client";
@@ -170,7 +160,6 @@ namespace TCP_MultiChat
         private GroupBox groupBox1;
         private TextBox txt_Port;
         private GroupBox group_Chat;
-        private Button btn_DoiPort;
         private ListView lv_KhungChat;
         private TextBox txt_TinNhan;
         private Button btn_Gui;

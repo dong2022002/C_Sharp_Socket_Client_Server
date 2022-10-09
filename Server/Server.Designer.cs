@@ -124,13 +124,16 @@ namespace Server
             // lv_DanhSach
             // 
             this.lv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_DanhSach.FullRowSelect = true;
             this.lv_DanhSach.HideSelection = false;
             this.lv_DanhSach.Location = new System.Drawing.Point(3, 18);
+            this.lv_DanhSach.MultiSelect = false;
             this.lv_DanhSach.Name = "lv_DanhSach";
             this.lv_DanhSach.Size = new System.Drawing.Size(244, 345);
             this.lv_DanhSach.TabIndex = 0;
             this.lv_DanhSach.UseCompatibleStateImageBehavior = false;
             this.lv_DanhSach.View = System.Windows.Forms.View.List;
+            this.lv_DanhSach.SelectedIndexChanged += new System.EventHandler(this.lv_DanhSach_SelectedIndexChanged);
             // 
             // btn_Nhom
             // 

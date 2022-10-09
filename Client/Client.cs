@@ -51,8 +51,17 @@ namespace TCP_MultiChat
                 while (true)
                 {
                     string str = sr.ReadLine();
-                    if (str != null)
-                        AddMessage(str);
+                    if (str=="guidanhsachclient!!!")
+                    {
+                        string ds = sr.ReadLine();
+                        LoadLVDanhSach(ds);
+                    }
+                    else
+                    {
+                        if (str != null)
+                            AddMessage(str);
+                    }
+                   
                 }
 
             }
@@ -64,10 +73,30 @@ namespace TCP_MultiChat
 
         }
 
+        private void LoadLVDanhSach(string str)
+        {
+            lv_DanhSach.Items.Clear();
+            string[] ds = getListDSClient(str);
+          
+            foreach (var item in ds)
+            {
+                if (DataClient.ip!=item)
+                {
+                lv_DanhSach.Items.Add(new ListViewItem() { Text = item.ToString() });
+                }
+            }
+        }
+
+        private string[] getListDSClient(string str)
+        {
+           return str.Split(';');
+        }
+
         private void AddMessage(string text)
         {
             if (!string.IsNullOrEmpty(text))
             {
+              
                 lv_KhungChat.Items.Add(new ListViewItem() { Text = text });
                 txt_TinNhan.Clear();
             }
@@ -134,9 +163,10 @@ namespace TCP_MultiChat
         {
             NetworkStream stream = client.GetStream();
             StreamWriter sw = new StreamWriter(stream);
-            string str = "Close Client...";
+            string str = "aksjkhfdsạkghjkdsahgjkdsahk";
             sw.WriteLine(str);
             sw.Flush();
+            stream.Close();
         }
     }
 }
