@@ -1,0 +1,12 @@
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\bin\Debug\Server_TCP.exe.config
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\bin\Debug\Server_TCP.exe
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\bin\Debug\Server_TCP.pdb
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.csproj.AssemblyReference.cache
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.csproj.SuggestedBindingRedirects.cache
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.Form1.resources
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.Properties.Resources.resources
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.csproj.GenerateResource.cache
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.csproj.CoreCompileInputs.cache
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.exe
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\Server_TCP.pdb
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Server_TCP\obj\Debug\TCp_MultiChat.form_ServerPort.resources
