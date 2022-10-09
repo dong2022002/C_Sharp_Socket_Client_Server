@@ -116,11 +116,14 @@ namespace Server
 
         private void loadLVDanhSach()
         {
+            int tong = 0;
            lv_DanhSach.Items.Clear();
             foreach (TcpClient item in clients)
             {
                 lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Client.RemoteEndPoint.ToString() });
+                tong++;
             }
+            lbl_SoLuong.Text = tong.ToString();
         }
 
         private void SendIPRemote(TcpClient client)
@@ -191,7 +194,11 @@ namespace Server
         {
             if (!string.IsNullOrEmpty(text))
             {
-            lv_KhungChat.Items.Add(text);
+                this.txt_KhungChat.Invoke(new MethodInvoker(delegate ()
+                {
+                    txt_KhungChat.AppendText(text + "\r\n");
+                }));
+                //lv_KhungChat.Items.Add(text);
             }
         }
         private void Send(TcpClient client,string s)

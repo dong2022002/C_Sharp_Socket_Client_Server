@@ -10,3 +10,15 @@ D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\obj\Debug\Client.cspro
 D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\obj\Debug\Client.exe
 D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\obj\Debug\Client.pdb
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\bin\Debug\Client.exe.config
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\bin\Debug\Client.exe
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\bin\Debug\Client.pdb
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\TCP_MultiChat.form_Client.resources
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\TCP_MultiChat.form_ClientConnect.resources
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.Properties.Resources.resources
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.exe
+D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.pdb
