@@ -219,7 +219,7 @@ namespace Server
         {
             foreach (TcpClient item in this.clients)
             {
-                Send(item,TextServer(txt_Port.Text));
+                Send(item,TextServer(txt_TinNhan.Text));
             }
             AddMessage(TextServer(txt_TinNhan.Text));
             txt_TinNhan.Clear();
