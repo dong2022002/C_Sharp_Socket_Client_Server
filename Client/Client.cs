@@ -97,7 +97,7 @@ namespace TCP_MultiChat
             if (!string.IsNullOrEmpty(text))
             {
               
-                lv_KhungChat.Items.Add(new ListViewItem() { Text = text });
+                txt_KhungChat.AppendText(text +"\r\n");
                 txt_TinNhan.Clear();
             }
 
@@ -161,12 +161,21 @@ namespace TCP_MultiChat
 
         private void endClient()
         {
-            NetworkStream stream = client.GetStream();
-            StreamWriter sw = new StreamWriter(stream);
-            string str = "aksjkhfdsạkghjkdsahgjkdsahk";
-            sw.WriteLine(str);
-            sw.Flush();
-            stream.Close();
+            try
+            {
+                NetworkStream stream = client.GetStream();
+                StreamWriter sw = new StreamWriter(stream);
+                string str = "endConnectClient";
+                sw.WriteLine(str);
+                sw.Flush();
+                stream.Close();
+            }
+            catch (Exception)
+            {
+                client.Close();
+                Application.Exit();
+            }
+          
         }
     }
 }

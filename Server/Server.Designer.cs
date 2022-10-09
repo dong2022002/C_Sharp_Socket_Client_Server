@@ -84,7 +84,7 @@ namespace Server
             // 
             this.txt_KhungChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_KhungChat.Location = new System.Drawing.Point(3, 17);
-            this.txt_KhungChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_KhungChat.Margin = new System.Windows.Forms.Padding(4);
             this.txt_KhungChat.Multiline = true;
             this.txt_KhungChat.Name = "txt_KhungChat";
             this.txt_KhungChat.ReadOnly = true;
@@ -144,7 +144,7 @@ namespace Server
             this.lv_DanhSach.Size = new System.Drawing.Size(245, 324);
             this.lv_DanhSach.TabIndex = 0;
             this.lv_DanhSach.UseCompatibleStateImageBehavior = false;
-            this.lv_DanhSach.View = System.Windows.Forms.View.Details;
+            this.lv_DanhSach.View = System.Windows.Forms.View.List;
             // 
             // btn_Nhom
             // 

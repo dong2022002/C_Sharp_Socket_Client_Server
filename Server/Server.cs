@@ -76,6 +76,7 @@ namespace Server
                         receive.Start(client);
                         SendListClient();
                         loadLVDanhSach();
+
                     }
                 }
                 catch
@@ -115,15 +116,13 @@ namespace Server
         }
 
         private void loadLVDanhSach()
-        {
-            int tong = 0;
+        {          
            lv_DanhSach.Items.Clear();
             foreach (TcpClient item in clients)
             {
-                lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Client.RemoteEndPoint.ToString() });
-                tong++;
+                lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Client.RemoteEndPoint.ToString() });               
             }
-            lbl_SoLuong.Text = tong.ToString();
+            lbl_SoLuong.Text = clients.Count.ToString();
         }
 
         private void SendIPRemote(TcpClient client)
@@ -147,7 +146,7 @@ namespace Server
                 while (true)
                 {
                     string str = sr.ReadLine();
-                    if (str == "aksjkhfdsạkghjkdsahgjkdsahk")
+                    if (str == "endConnectClient")
                     {
                         AddMessage("Client "+client.Client.RemoteEndPoint.ToString()+" vừa đóng kết nối");
                         EndClient(client);
@@ -172,7 +171,7 @@ namespace Server
             }
             catch
             {
-                clients.Remove(client);                
+                clients.Remove(client);            
                 client.Close();
             
             }
@@ -231,7 +230,6 @@ namespace Server
             foreach (var item in clients)
             {
                     str += item.Client.RemoteEndPoint.ToString() + ";";
-               
             }
             return str;
         }
