@@ -42,13 +42,16 @@ namespace Server
                 return;
             }
             this.Show();
-            txt_Port.Text = DataServer.port;
             Connect();
+            txt_Port.Text = DataServer.port;
         }
 
         private string TextServer(string text)
         {
+          
             return  "server:   " + text;
+
+        
         }
         private void Connect()
         {
@@ -62,13 +65,13 @@ namespace Server
                     while (true)
                     {
 
-                        TcpClient client = server.AcceptTcpClient();
-                        lv_DanhSach.Items.Add(new ListViewItem() { Text = client.Client.RemoteEndPoint.ToString() });
+                        TcpClient client = server.AcceptTcpClient();                      
                         SendIPRemote(client);
                         clients.Add(client);
                         Thread receive = new Thread(Receive);
                         receive.IsBackground = true;
                         receive.Start(client);
+                        loadLVDanhSach();
                     }
                 }
                 catch
@@ -79,12 +82,12 @@ namespace Server
                         server.Stop();
                         return;
                     }
-                    else
-                    {
+
+                    server = new TcpListener(IPAddress.Any, 9050);
                       
-                        server = new TcpListener(IPAddress.Any, 9050);
-                      
-                    }
+                    
+                    loadLVDanhSach();
+
 
                 }
 
@@ -93,6 +96,15 @@ namespace Server
             listen.IsBackground = true;
             listen.Start();
 
+        }
+
+        private void loadLVDanhSach()
+        {
+           lv_DanhSach.Items.Clear();
+            foreach (TcpClient item in clients)
+            {
+                lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Client.RemoteEndPoint.ToString() });
+            }
         }
 
         private void SendIPRemote(TcpClient client)
@@ -109,12 +121,19 @@ namespace Server
 
             TcpClient client = obj as TcpClient;
             NetworkStream stream = client.GetStream();
-            StreamReader sr = new StreamReader(stream);
             try
             {
+                
+                StreamReader sr = new StreamReader(stream);
                 while (true)
                 {
                     string str = sr.ReadLine();
+                    if (str == "Close Client...")
+                    {
+                        AddMessage("Client "+client.Client.RemoteEndPoint.ToString()+" vừa đóng kết nối");
+                        EndClient(client);
+                        return;
+                    }
                     if (str != null)
                         AddMessage(str);
                     foreach (TcpClient item in clients)
@@ -134,20 +153,29 @@ namespace Server
             }
             catch
             {
-
-                clients.Remove(client);
+                clients.Remove(client);                
                 client.Close();
-                stream.Close();
-
+            
             }
 
 
 
 
         }
+
+        private void EndClient(TcpClient client)
+        {
+            clients.Remove((TcpClient)client);
+            client.Close();
+            loadLVDanhSach();
+        }
+
         private void AddMessage(string text)
         {
+            if (!string.IsNullOrEmpty(text))
+            {
             lv_KhungChat.Items.Add(text);
+            }
         }
         private void Send(TcpClient client)
         {

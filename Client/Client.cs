@@ -36,9 +36,9 @@ namespace TCP_MultiChat
                 return;
             }
             this.Show();
-            txt_Port.Text = DataClient.port;
-           
             Connect();
+            txt_Port.Text = DataClient.ip;
+           
         }
         private void Receive()
         {
@@ -122,6 +122,21 @@ namespace TCP_MultiChat
         private void btn_Gui_Click(object sender, EventArgs e)
         {
             Send();
+        }
+
+        private void form_Client_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            endClient();
+           client.Close();
+        }
+
+        private void endClient()
+        {
+            NetworkStream stream = client.GetStream();
+            StreamWriter sw = new StreamWriter(stream);
+            string str = "Close Client...";
+            sw.WriteLine(str);
+            sw.Flush();
         }
     }
 }

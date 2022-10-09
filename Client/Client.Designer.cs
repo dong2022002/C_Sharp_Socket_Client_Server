@@ -154,6 +154,7 @@ namespace TCP_MultiChat
             this.Controls.Add(this.groupBox1);
             this.Name = "form_Client";
             this.Text = "Client";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_Client_FormClosed);
             this.Load += new System.EventHandler(this.form_Client_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
