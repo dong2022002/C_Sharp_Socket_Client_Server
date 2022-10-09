@@ -68,8 +68,12 @@ namespace TCP_MultiChat
         {
             if (!string.IsNullOrEmpty(text))
             {
-                lv_KhungChat.Items.Add(new ListViewItem() { Text = text });
-                txt_TinNhan.Clear();
+                this.txt_KhungChat.Invoke(new MethodInvoker(delegate ()
+                {
+                    txt_KhungChat.AppendText(text + "\r\n");
+                    //txt_KhungChat.Items.Add(new ListViewItem() { Text = text });
+                    txt_TinNhan.Clear();
+                }));
             }
 
         }
