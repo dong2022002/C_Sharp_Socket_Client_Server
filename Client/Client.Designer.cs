@@ -55,7 +55,7 @@ namespace TCP_MultiChat
             this.groupBox1.Size = new System.Drawing.Size(199, 62);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Port";
+            this.groupBox1.Text = "Tên Client";
             // 
             // txt_Port
             // 
@@ -82,7 +82,7 @@ namespace TCP_MultiChat
             // 
             this.txt_KhungChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_KhungChat.Location = new System.Drawing.Point(3, 17);
-            this.txt_KhungChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_KhungChat.Margin = new System.Windows.Forms.Padding(4);
             this.txt_KhungChat.Multiline = true;
             this.txt_KhungChat.Name = "txt_KhungChat";
             this.txt_KhungChat.ReadOnly = true;

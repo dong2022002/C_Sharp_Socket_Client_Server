@@ -22,3 +22,6 @@ D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Clie
 D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.exe
 D:\School\Year 3\Lập trình mạng\BT_Nhom\Client_Server\Client\obj\Debug\Client.pdb
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\bin\Debug\Newtonsoft.Json.dll
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\bin\Debug\Newtonsoft.Json.xml
+D:\Hoc_tap\Nam3_ky1\LapTrinhMang\Client_Server_TCP\Client\obj\Debug\Client.csproj.CopyComplete

@@ -43,7 +43,7 @@ namespace Server
             }
             this.Show();
             Connect();
-            txt_Port.Text = DataServer.port;
+            txt_Port.Text = DataServer.portServer;
         }
 
         private string TextServer(string text)
@@ -60,7 +60,7 @@ namespace Server
             Thread listen = new Thread(() => {
                 try
                 {
-                    server = new TcpListener(IPAddress.Any, int.Parse(DataServer.port));
+                    server = new TcpListener(IPAddress.Any, int.Parse(DataServer.portServer));
                     server.Start();
                     while (true)
                     {
@@ -68,13 +68,14 @@ namespace Server
                         TcpClient client = server.AcceptTcpClient();
                         /// gửi port kết nối về client
                         SendIPRemote(client);
+                        ReceiveMessUser(client);
                         clients.Add(client);
                         /// gửi danh sách client kết nối 
                         ///
                         Thread receive = new Thread(Receive);
                         receive.IsBackground = true;
                         receive.Start(client);
-                        SendListClient();
+                        SendListClient(client);
                         loadLVDanhSach();
 
                     }
@@ -103,7 +104,16 @@ namespace Server
 
         }
 
-        private void SendListClient()
+        private void ReceiveMessUser(TcpClient client)
+        {
+
+            NetworkStream stream = client.GetStream();
+            StreamReader sr = new StreamReader(stream);
+            string user = sr.ReadLine();
+            DataServer.listUser.Add(new User(client.Client.RemoteEndPoint.ToString(),user));
+        }
+
+        private void SendListClient(TcpClient client)
         {
             if (chuoiDanhSachClient() != "")
             {
@@ -118,9 +128,9 @@ namespace Server
         private void loadLVDanhSach()
         {          
            lv_DanhSach.Items.Clear();
-            foreach (TcpClient item in clients)
+            foreach (User item in DataServer.listUser)
             {
-                lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Client.RemoteEndPoint.ToString() });               
+                lv_DanhSach.Items.Add(new ListViewItem() { Text= item.Name + " - ("+item.port+")" });               
             }
             lbl_SoLuong.Text = clients.Count.ToString();
         }
@@ -183,10 +193,23 @@ namespace Server
 
         private void EndClient(TcpClient client)
         {
-            clients.Remove((TcpClient)client);
+            User del = new User();
+            foreach (User item in DataServer.listUser)
+            {
+                if (item.port == client.Client.RemoteEndPoint.ToString())
+                {
+                    del = item;
+                    break;
+                }
+            }
+            clients.Remove(client);
+            if (del != null)
+            {
+                DataServer.listUser.Remove(del);
+            }
             client.Close();
             loadLVDanhSach();
-            SendListClient();
+            SendListClient(client);
         }
 
         private void AddMessage(string text)
@@ -227,9 +250,9 @@ namespace Server
         private string chuoiDanhSachClient()
         {
             string str = "server;";
-            foreach (var item in clients)
+            foreach (var item in DataServer.listUser)
             {
-                    str += item.Client.RemoteEndPoint.ToString() + ";";
+                str += item.Name +" - ("+item.port+ ");";
             }
             return str;
         }

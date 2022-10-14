@@ -17,6 +17,7 @@ namespace TCP_MultiChat
         {
             InitializeComponent();
             txt_Port.Text = "9050";
+            txtMK.PasswordChar = '*';
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
@@ -26,15 +27,38 @@ namespace TCP_MultiChat
 
         private void btn_KetNoi_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Port.Text))
+            if (string.IsNullOrEmpty(txt_Port.Text)||string.IsNullOrEmpty(txtTaiKhoan.Text)||string.IsNullOrEmpty(txtMK.Text))
             {
-                MessageBox.Show("Nhập port để kết nối tới server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Nhập thông tin để kết nối tới server", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
-                DataClient.port = txt_Port.Text;
+                bool flag = false;
+                DataClient.createUserData();
+
+                foreach (Account account in DataClient.dataLogin)
+                    {
+
+                    if (string.Compare(account.user,txtTaiKhoan.Text)==0 && string.Compare(account.password,txtMK.Text) == 0)
+                        {
+                            DataClient.portClient = txt_Port.Text;
+                            DataClient.user = txtTaiKhoan.Text;
+                            DataClient.password = txtMK.Text;
+                            this.DialogResult = DialogResult.OK;
+                            flag = true;
+                            break;
+                        }
+                    }
+                if (!flag)
+                {
+                    MessageBox.Show("sai tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+
+                }
+                   
+            
+               
             }
         }
 

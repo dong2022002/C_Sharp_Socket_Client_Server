@@ -37,7 +37,7 @@ namespace Server
             else
             {
                 this.DialogResult = DialogResult.OK;
-                DataServer.port = txtPort.Text;
+                DataServer.portServer = txtPort.Text;
             }
             
            

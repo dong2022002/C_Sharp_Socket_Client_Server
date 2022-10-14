@@ -37,7 +37,7 @@ namespace TCP_MultiChat
             }
             this.Show();
             Connect();
-            txt_Port.Text = DataClient.ip;
+            //txt_Port.Text = DataClient.ip;
            
         }
         private void Receive()
@@ -77,12 +77,16 @@ namespace TCP_MultiChat
         {
             lv_DanhSach.Items.Clear();
             string[] ds = getListDSClient(str);
-          
+            
             foreach (var item in ds)
             {
-                if (DataClient.ip!=item)
+                if ((DataClient.user+" - (" +DataClient.ip+")")!=item)
                 {
                 lv_DanhSach.Items.Add(new ListViewItem() { Text = item.ToString() });
+                }
+                else
+                {
+                    txt_Port.Text = item.ToString();
                 }
             }
         }
@@ -105,7 +109,7 @@ namespace TCP_MultiChat
 
         private void Send()
         {
-            if (!String.IsNullOrEmpty(txt_TinNhan.Text) && client != null)
+            if (!string.IsNullOrEmpty(txt_TinNhan.Text) && client != null)
             {
                 NetworkStream stream = client.GetStream();
                 StreamWriter sw = new StreamWriter(stream);
@@ -116,16 +120,28 @@ namespace TCP_MultiChat
                 AddMessage(str);
             }
         }
+        private void SendMess(string data)
+        {
+            if (data != null)
+            {
+                NetworkStream stream = client.GetStream();
+                StreamWriter sw = new StreamWriter(stream);            
+                sw.WriteLine(data);
+                sw.Flush();
+            }
+        }
         private string TextClient(string text)
         {
-            return DataClient.ip+":   "+ text;
+            return DataClient.user+":   "+ text;
         }
         private void Connect()
         {
             try
             {
-                client = new TcpClient("127.0.0.1",int.Parse( DataClient.port));
+                client = new TcpClient("127.0.0.1",int.Parse( DataClient.portClient));
+                SendMess(DataClient.user);
                 ReceiveIpRemote(client);
+
             }
             catch (Exception)
             {
